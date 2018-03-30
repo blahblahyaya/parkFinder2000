@@ -10,11 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var floors : [Floor] = []
+
     @IBOutlet weak var floorLabel: UILabel!
     @IBOutlet weak var floorSegment: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getFloor()
+//        floorLabel.text = floors.floorValue
+        
     }
 
     @IBAction func indexChanged(_ sender: Any) {
@@ -39,6 +48,23 @@ class ViewController: UIViewController {
             floorLabel.text = "4";
         default:
             break
+        }
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let floors = Floor(context: context)
+        floors.floorValue = floorLabel.text!
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        print(floors as Any)
+    }
+    
+    func getFloor() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            floors = try context.fetch(Floor.fetchRequest()) as! [Floor]
+            print(floors as Any)
+        } catch {
+            print("OOPS WE HAVE AN ERROR")
         }
     }
     
