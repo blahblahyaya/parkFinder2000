@@ -63,11 +63,11 @@ class ViewController: UIViewController {
             break
         }
         
-        savedTime.text = "updated: \(dateFormatter.string(from: NSDate() as Date))"
         defaults.set(floorSegment.selectedSegmentIndex, forKey: "Index")
         defaults.set(floorLabel.text, forKey: "Floor")
-        defaults.set(savedTime.text, forKey: "savedtime")
-  
+        defaults.set( "updated: \(dateFormatter.string(from: NSDate() as Date))", forKey: "savedTime")
+        savedTime.text =
+            defaults.string(forKey: "savedTime")
     }
     
 }
