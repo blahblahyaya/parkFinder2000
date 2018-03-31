@@ -46,19 +46,29 @@
                                     <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dfa-Uf-jc9"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="updated: 01-01 12:34pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsp-wx-hm2">
+                                <rect key="frame" x="101.5" y="393" width="172" height="18.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="0.59999999999999998" alpha="0.849334286971831" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.99269431829452515" green="0.4418080747127533" blue="0.31982538104057312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99269431829999999" green="0.4418080747" blue="0.31982538100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.99269431829999999" green="0.4418080747" blue="0.31982538100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ptw-Nl-L6x" secondAttribute="bottom" constant="120" id="5bL-ol-1IW"/>
+                            <constraint firstItem="Xsp-wx-hm2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JRg-3S-zQs"/>
                             <constraint firstItem="pmw-76-Ad6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JkP-bx-pOp"/>
                             <constraint firstItem="pmw-76-Ad6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="Tfj-ff-Nwi"/>
                             <constraint firstItem="Ptw-Nl-L6x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eAF-ow-RAr"/>
+                            <constraint firstItem="Xsp-wx-hm2" firstAttribute="top" secondItem="pmw-76-Ad6" secondAttribute="bottom" constant="30" id="h7o-Us-QIP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="floorLabel" destination="pmw-76-Ad6" id="bj4-RL-ym4"/>
                         <outlet property="floorSegment" destination="Ptw-Nl-L6x" id="LUq-oH-neL"/>
+                        <outlet property="savedTime" destination="Xsp-wx-hm2" id="l8f-qQ-Esu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

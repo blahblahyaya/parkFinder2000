@@ -9,21 +9,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    var floors : [Floor] = []
+    let defaults = UserDefaults.standard
+    
+    var dateFormatter = DateFormatter()
+    
 
     @IBOutlet weak var floorLabel: UILabel!
     @IBOutlet weak var floorSegment: UISegmentedControl!
-    
+    @IBOutlet weak var savedTime: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        dateFormatter.timeStyle = .medium
+        
+        floorLabel.text =
+            defaults.string(forKey: "Floor")
+        floorSegment.selectedSegmentIndex = defaults.integer(forKey: "Index")
+        savedTime.text =
+            defaults.string(forKey: "savedTime")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getFloor()
-//        floorLabel.text = floors.floorValue
         
+        floorLabel.text = defaults.string(forKey: "Floor")
+        floorSegment.selectedSegmentIndex = defaults.integer(forKey: "Index")
     }
 
     @IBAction func indexChanged(_ sender: Any) {
@@ -50,22 +61,11 @@ class ViewController: UIViewController {
             break
         }
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        let floors = Floor(context: context)
-        floors.floorValue = floorLabel.text!
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        print(floors as Any)
-    }
-    
-    func getFloor() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        do {
-            floors = try context.fetch(Floor.fetchRequest()) as! [Floor]
-            print(floors as Any)
-        } catch {
-            print("OOPS WE HAVE AN ERROR")
-        }
+        savedTime.text = "updated: \(dateFormatter.string(from: NSDate() as Date))"
+        defaults.set(floorSegment.selectedSegmentIndex, forKey: "Index")
+        defaults.set(floorLabel.text, forKey: "Floor")
+        defaults.set(savedTime.text, forKey: "savedtime")
+  
     }
     
 }
