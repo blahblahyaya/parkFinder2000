@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         
         floorLabel.text = defaults.string(forKey: "Floor")
         floorSegment.selectedSegmentIndex = defaults.integer(forKey: "Index")
+        savedTime.text =
+            defaults.string(forKey: "savedTime")
     }
 
     @IBAction func indexChanged(_ sender: Any) {
